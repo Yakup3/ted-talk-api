@@ -5,6 +5,10 @@ This is an API which returns TED talk related data. The data is read from tedtal
 Data is taken from https://www.kaggle.com/ashishjangra27/ted-talks \
 The URL: http://ted-talk-api.herokuapp.com
 
+## Used Tools
+- Node.js
+- Express.js
+
 ## How to use
 
 ### Parameters
