@@ -1,6 +1,5 @@
 // const PORT = process.env.PORT;
 var PORT = process.env.YOUR_PORT || process.env.PORT || 80;
-var HOST = process.env.YOUR_HOST || "0.0.0.0";
 
 const express = require("express");
 const fs = require("fs");
@@ -17,19 +16,28 @@ app.get("/", (req, res) => {
   res.json("welcome to ted talk api");
 });
 
-app.get("/talks", (req, res) => {
+app.get("/talks/all", (req, res) => {
   res.json(talks);
 });
 
-app.get("/talks/:keyword", (req, res) => {
-  const searchedTalk = req.params.keyword;
-  const specificTalk = talks.filter((talk) =>
-    talk.title.toLowerCase().includes(searchedTalk.toLowerCase())
-  );
+app.get("/talks", (req, res, next) => {
+  const searchedTalk = req.query.keyword;
+  const views = req.query.views;
+  const likes = req.query.likes;
 
+  const talkData = searchedTalk == undefined ? "" : searchedTalk;
+  const viewsData = views == undefined ? 0 : views;
+  const likesData = likes == undefined ? 0 : likes;
+
+  const specificTalk = talks.filter(
+    (talk) =>
+      talk.title.toLowerCase().includes(talkData.toLowerCase()) &&
+      talk.likes > likesData &&
+      talk.views > viewsData
+  );
   res.json(specificTalk);
 });
 
-app.listen(PORT, HOST, () => {
+app.listen(PORT, () => {
   console.log(`running on PORT ${PORT}`);
 });
