@@ -1,4 +1,6 @@
-const PORT = process.env.PORT;
+// const PORT = process.env.PORT;
+var PORT = process.env.YOUR_PORT || process.env.PORT || 80;
+var HOST = process.env.YOUR_HOST || "0.0.0.0";
 
 const express = require("express");
 const fs = require("fs");
@@ -28,6 +30,6 @@ app.get("/talks/:keyword", (req, res) => {
   res.json(specificTalk);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, HOST, () => {
   console.log(`running on PORT ${PORT}`);
 });
