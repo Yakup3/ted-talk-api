@@ -11,6 +11,10 @@ fs.readFile("tedtalk.json", "utf8", (err, data) => {
   talks = JSON.parse(data);
 });
 
+app.get("/", (req, res) => {
+  res.json("welcome to ted talk api");
+});
+
 app.get("/talks", (req, res) => {
   res.json(talks);
 });
