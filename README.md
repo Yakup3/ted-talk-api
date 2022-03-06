@@ -1,7 +1,8 @@
 # TED talk API
 
 ## Description
-This is an API which returns TED talk related data.
+This is an API which returns TED talk related data. The data is read from tedtalk.json file.\
+Data is taken from https://www.kaggle.com/ashishjangra27/ted-talks \
 The URL: http://ted-talk-api.herokuapp.com
 
 ## How to use
