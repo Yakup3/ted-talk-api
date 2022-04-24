@@ -7,7 +7,7 @@ const app = express();
 
 var talks = [];
 
-fs.readFile("tedtalk.json", "utf8", (err, data) => {
+fs.readFile("tedTalkDetailed.json", "utf8", (err, data) => {
   if (err) console.log(err);
   talks = JSON.parse(data);
 });
