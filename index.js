@@ -1,4 +1,3 @@
-// const PORT = process.env.PORT;
 var PORT = process.env.YOUR_PORT || process.env.PORT || 80;
 
 const express = require("express");
