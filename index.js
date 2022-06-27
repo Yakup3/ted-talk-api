@@ -5,15 +5,6 @@ const app = express();
 
 app.use(express.json());
 
-const fs = require("fs");
-
-var talks = [];
-
-fs.readFile("tedTalkDetailed.json", "utf8", (err, data) => {
-  if (err) console.log(err);
-  talks = JSON.parse(data);
-});
-
 app.get("/", (req, res) => {
   res.json("welcome to ted talk api");
 });
