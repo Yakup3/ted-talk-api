@@ -1,5 +1,6 @@
 var PORT = process.env.YOUR_PORT || process.env.PORT || 80;
 const express = require("express");
+const serverless = require("serverless-http");
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 
@@ -80,4 +81,4 @@ app.listen(PORT, () => {
   console.log(`running on PORT ${PORT}`);
 });
 
-module.exports = app;
+module.exports = serverless(app);
