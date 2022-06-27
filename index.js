@@ -10,7 +10,7 @@ app.use(express.json());
 const uri =
   "mongodb+srv://user:user@cluster0.70kshxo.mongodb.net/?retryWrites=true&w=majority";
 const dbName = "ted-talk";
-const collectionName = "sample";
+const collectionName = "talks";
 
 const client = new MongoClient(uri, { useUnifiedTopology: true });
 
