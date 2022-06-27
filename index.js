@@ -1,5 +1,4 @@
 var PORT = process.env.YOUR_PORT || process.env.PORT || 80;
-
 const express = require("express");
 
 const app = express();
@@ -36,6 +35,9 @@ app.get("/talks", (req, res, next) => {
   );
   res.json(specificTalk);
 });
+
 app.listen(PORT, () => {
   console.log(`running on PORT ${PORT}`);
 });
+
+module.exports = app;
