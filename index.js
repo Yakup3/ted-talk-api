@@ -19,21 +19,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/talks", (req, res) => {
-  const searchedTalk = req.query.keyword;
-  const views = req.query.views;
-  const likes = req.query.likes;
-
-  const talkData = searchedTalk == undefined ? "" : searchedTalk;
-  const viewsData = views == undefined ? 0 : views;
-  const likesData = likes == undefined ? 0 : likes;
-
-  const specificTalk = talks.filter(
-    (talk) =>
-      talk.title.toLowerCase().includes(talkData.toLowerCase()) &&
-      talk.likes > likesData &&
-      talk.views > viewsData
-  );
-  res.json(specificTalk);
+  res.json("this is talks path");
 });
 
 app.listen(PORT, () => {
