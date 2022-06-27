@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
   res.json("welcome to ted talk api");
 });
 
-app.get("/talks", (req, res, next) => {
+app.get("/talks", (req, res) => {
   const searchedTalk = req.query.keyword;
   const views = req.query.views;
   const likes = req.query.likes;
