@@ -32,6 +32,8 @@ app.get("/talks", async (req, res) => {
   res.json({ count: data.length, data: data });
 });
 
+console.log("hello");
+
 app.get("/talks/:id", async (req, res) => {
   let data;
 
