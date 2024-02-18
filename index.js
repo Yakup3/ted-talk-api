@@ -1,15 +1,28 @@
-var PORT = process.env.YOUR_PORT || process.env.PORT || 80;
-
+const dotenv = require("dotenv");
 const express = require("express");
+const { connectToDatabase } = require("./src/db");
+const talksRoutes = require("./src/routes/routes");
+
+dotenv.config();
 
 const app = express();
-
 app.use(express.json());
 
-const router = require("./routes/routes");
+connectToDatabase()
+  .then(() => {
+    app.use(express.json());
 
-app.use("/", router);
+    app.get("/", (req, res) => {
+      res.send("welcome to ted talk api");
+    });
 
-app.listen(PORT, () => {
-  console.log(`running on PORT ${PORT}`);
-});
+    app.use("/talks", talksRoutes);
+
+    app.listen(process.env.PORT, () => {
+      console.log("Server is running on port", process.env.PORT);
+    });
+  })
+  .catch((error) => {
+    console.log(process.env.MONGODB_DB);
+    console.error("Failed to connect to the database:", error);
+  });
